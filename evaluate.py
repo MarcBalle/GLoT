@@ -138,7 +138,7 @@ if __name__ == "__main__":
     Path(out_dir).mkdir(parents=True, exist_ok=True)
 
     if target_dataset == "3dpw":
-        data_path = f"/home/shenxiaolong.sxl/remote_t1/data/preprocessed_data/{target_dataset}_{set}_db.pt"  #
+        data_path = f"C:\\Users\\marcw\\master_thesis\\forked\\GLoT\\data\\preprocessed_data\\{target_dataset}_{set}_db.pt"  #
     elif target_dataset == "h36m":
         if cfg.TITLE == "repr_table4_h36m_mpii3d_model":
             data_path = (
