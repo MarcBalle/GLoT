@@ -18,7 +18,7 @@ import os
 import os.path as osp
 from lib.core.config import BASE_DATA_DIR
 from lib.models.smpl import SMPL, SMPL_MODEL_DIR
-os.environ['PYOPENGL_PLATFORM'] = 'egl'
+# os.environ['PYOPENGL_PLATFORM'] = 'egl'
 import munch
 import yaml
 import cv2
@@ -32,7 +32,7 @@ import random
 import numpy as np
 from pathlib import Path
 from tqdm import tqdm
-from multi_person_tracker import MPT
+from ext.multi_person_tracker import MPT    
 from torch.utils.data import DataLoader
 import importlib
 from lib.utils.renderer import Renderer
@@ -69,6 +69,8 @@ def main(args, cfgs):
     total_time = time.time()
     bbox_scale = 1.2
     # run multi object tracker
+    mot = MPT()
+
     mot = MPT(
         device=device,
         batch_size=args.tracker_batch_size,
