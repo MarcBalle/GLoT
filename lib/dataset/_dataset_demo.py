@@ -23,7 +23,7 @@ from torch.utils.data import Dataset
 from torchvision.transforms.functional import to_tensor
 
 from lib.utils.smooth_bbox import get_all_bbox_params
-from lib.data_utils._img_utils import get_single_image_crop_demo
+from lib.data_utils._img_utils import get_single_image_crop_demo, convert_cvimg_to_tensor
 
 
 class CropDataset(Dataset):
@@ -107,3 +107,21 @@ class FeatureDataset(Dataset):
 
         return self.get_sequence(start_idx, end_idx)
 
+
+class FullIMageDataset(Dataset):
+    def __init__(self, image_folder, frames, bboxes=None, joints2d=None, scale=1.0, crop_size=224):
+        self.image_file_names = [
+            osp.join(image_folder, x)
+            for x in os.listdir(image_folder)
+            if x.endswith('.png') or x.endswith('.jpg')
+        ]
+        self.image_file_names = sorted(self.image_file_names)
+        self.image_file_names = np.array(self.image_file_names)[frames]
+
+    def __len__(self):
+        return len(self.image_file_names)
+
+    def __getitem__(self, idx):
+        img = cv2.cvtColor(cv2.imread(self.image_file_names[idx]), cv2.COLOR_BGR2RGB)
+
+        return convert_cvimg_to_tensor(img)

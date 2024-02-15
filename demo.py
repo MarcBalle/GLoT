@@ -68,8 +68,6 @@ def main(args, cfgs):
     """ Run tracking """
     total_time = time.time()
     bbox_scale = 1.2
-    # run multi object tracker
-    mot = MPT()
 
     mot = MPT(
         device=device,
