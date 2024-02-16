@@ -23,7 +23,7 @@ TRAIN:
   BATCH_SIZE: 64
   NUM_ITERS_PER_EPOCH: 1000
   PRETRAINED: "./data/pretrained_models/table1_3dpw_weights.pth.tar" # for testing
-  PRETRAINED_REGRESSOR: "/mtn/workfiles/data/glot/base_data/spin_model_checkpoint.pth.tar" # your path
+  PRETRAINED_REGRESSOR: "/mtn/workfiles/data/glot/data/base_data/spin_model_checkpoint.pth.tar" # your path
   RESUME: ""
   START_EPOCH: 0
   END_EPOCH: 50

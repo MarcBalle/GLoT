@@ -7,7 +7,7 @@ from ext.yolov3.utils.datasets import pad_to_square, resize
 
 def download_url(url, outdir):
     print(f'Downloading files from {url}')
-    cmd = ['C:\\Users\\marcw\\master_thesis\\wget.exe', '-c', url, '-P', outdir]
+    cmd = ['wget', '-c', url, '-P', outdir]
     subprocess.call(cmd)
 
 
