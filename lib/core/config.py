@@ -20,7 +20,7 @@ from yacs.config import CfgNode as CN
 
 # CONSTANTS
 # You may modify them at will
-GLoT_DB_DIR = 'C:\\Users\\marcw\\master_thesis\\forked\\GLoT\\data\\preprocessed_data'
+GLoT_DB_DIR = '/mnt/workfiles/data/glot/preprocessed_data'
 AMASS_DIR = '/home/shenxiaolong.sxl/remote_t1/data/amass'
 INSTA_DIR = '/home/shenxiaolong.sxl/remote_t1/data/insta_variety'
 MPII3D_DIR = '/home/shenxiaolong.sxl/remote_t1/data/mpi_inf_3dhp'
@@ -28,7 +28,7 @@ THREEDPW_DIR = '/home/shenxiaolong.sxl/remote_t1/data/3dpw'
 H36M_DIR = '/home/shenxiaolong.sxl/remote_t1/data/h36m'
 PENNACTION_DIR = '/home/shenxiaolong.sxl/remote_t1/data/penn_action'
 POSETRACK_DIR = '/home/shenxiaolong.sxl/remote_t1/data/posetrack'
-BASE_DATA_DIR = 'C:\\Users\\marcw\\master_thesis\\forked\\GLoT\\data\\base_data'
+BASE_DATA_DIR = '/mnt/workfiles/data/glot/base_data'
 
 # Configuration variables
 cfg = CN()

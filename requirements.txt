@@ -19,3 +19,4 @@ pyglet==1.5.26
 pyrender==0.1.36
 smplx==0.1.13
 timm==0.6.5
+numpy==1.23.1
