@@ -36,7 +36,7 @@ from ext.multi_person_tracker import MPT
 from torch.utils.data import DataLoader
 import importlib
 from lib.utils.renderer import Renderer
-from lib.dataset._dataset_demo import CropDataset, FeatureDataset
+from lib.dataset._dataset_demo import CropDataset, FeatureDataset, FullIMageDataset
 from lib.utils.demo_utils import (
     download_youtube_clip,
     convert_crop_cam_to_orig_img,
@@ -145,13 +145,15 @@ def main(args, cfgs):
         frames = tracking_results[person_id]['frames']
 
         # Prepare static image features
-        dataset = CropDataset(
-            image_folder=image_folder,
-            frames=frames,
-            bboxes=bboxes,
-            joints2d=joints2d,
-            scale=bbox_scale,
-        )
+        # dataset = CropDataset(
+        #    image_folder=image_folder,
+        #   frames=frames,
+        #    bboxes=bboxes,
+        #    joints2d=joints2d,
+        #    scale=bbox_scale,
+        #)
+         # TODO: (1) create frames array containing all frame numbers, (2) bboxes is used in a couple of lines, what to do?
+        dataset = FullIMageDataset(image_folder=image_folder, frames=frames)
 
         bboxes = dataset.bboxes
         frames = dataset.frames
