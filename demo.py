@@ -159,7 +159,7 @@ def main(args, cfgs):
         frames = dataset.frames
         has_keypoints = True if joints2d is not None else False
 
-        crop_dataloader = DataLoader(dataset, batch_size=256, num_workers=16)
+        crop_dataloader = DataLoader(dataset, batch_size=16, num_workers=8)
 
         with torch.no_grad():
             feature_list = []
@@ -184,7 +184,7 @@ def main(args, cfgs):
         )
         dataset.feature_list = feature_list
 
-        dataloader = DataLoader(dataset, batch_size=64, num_workers=32)
+        dataloader = DataLoader(dataset, batch_size=4, num_workers=2)
         with torch.no_grad():
             pred_cam, pred_verts, pred_pose, pred_betas, pred_joints3d, norm_joints2d = [], [], [], [], [], []
 
