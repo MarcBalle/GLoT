@@ -122,6 +122,7 @@ class FullIMageDataset(Dataset):
         self.joints2d = joints2d
         self.scale = scale
         self.crop_size = crop_size
+        self.frames = frames
 
     def __len__(self):
         return len(self.image_file_names)
