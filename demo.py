@@ -169,7 +169,7 @@ def main(args, cfgs):
                     norm_joints2d.append(nj2d.numpy().reshape(-1, 21, 3))
 
                 batch = batch.to(device)
-                feature = hmr.feature_extractor(batch.reshape(-1,3,224,224))
+                feature = hmr.feature_extractor(batch.reshape(-1,3,540,960))
                 feature_list.append(feature.cpu())
 
             del batch
