@@ -118,6 +118,11 @@ class FullIMageDataset(Dataset):
         self.image_file_names = sorted(self.image_file_names)
         self.image_file_names = np.array(self.image_file_names)[frames]
 
+        self.bboxes = bboxes
+        self.joints2d = joints2d
+        self.scale = scale
+        self.crop_size = crop_size
+
     def __len__(self):
         return len(self.image_file_names)
 
