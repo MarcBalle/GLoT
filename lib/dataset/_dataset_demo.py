@@ -128,6 +128,9 @@ class FullIMageDataset(Dataset):
         return len(self.image_file_names)
 
     def __getitem__(self, idx):
+        # TODO: resize image using interpolate funciton. Check that image is still ok
         img = cv2.cvtColor(cv2.imread(self.image_file_names[idx]), cv2.COLOR_BGR2RGB)
 
-        return convert_cvimg_to_tensor(img)
+        img = convert_cvimg_to_tensor(img)
+
+        return img

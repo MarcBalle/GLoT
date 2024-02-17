@@ -159,7 +159,7 @@ def main(args, cfgs):
         frames = dataset.frames
         has_keypoints = True if joints2d is not None else False
 
-        crop_dataloader = DataLoader(dataset, batch_size=16, num_workers=8)
+        crop_dataloader = DataLoader(dataset, batch_size=8, num_workers=1)
 
         with torch.no_grad():
             feature_list = []
@@ -169,7 +169,7 @@ def main(args, cfgs):
                     norm_joints2d.append(nj2d.numpy().reshape(-1, 21, 3))
 
                 batch = batch.to(device)
-                feature = hmr.feature_extractor(batch.reshape(-1,3,540,960))
+                feature = hmr.feature_extractor(batch.reshape(-1,3,224,224))
                 feature_list.append(feature.cpu())
 
             del batch
