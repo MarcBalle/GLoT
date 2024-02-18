@@ -169,7 +169,7 @@ def prepare_rendering_results(GLoT_results, nframes):
             frame_results[frame_id][person_id] = {
                 'verts': person_data['verts'][idx],
                 'cam': person_data['orig_cam'][idx],
-                'bbox': person_data['bboxes'][idx],
+                'bbox': None,
             }
 
     # naive depth ordering based on the scale of the weak perspective camera

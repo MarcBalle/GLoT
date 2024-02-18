@@ -153,6 +153,7 @@ def main(args, cfgs):
         #    scale=bbox_scale,
         #)
          # TODO: (1) create frames array containing all frame numbers, (2) bboxes is used in a couple of lines, what to do?
+        frames = np.array(list(range(num_frames)))
         dataset = FullIMageDataset(image_folder=image_folder, frames=frames)
 
         bboxes = dataset.bboxes
@@ -216,7 +217,7 @@ def main(args, cfgs):
         pred_betas = pred_betas.cpu().numpy()
         pred_joints3d = pred_joints3d.cpu().numpy()
 
-        bboxes[:, 2:] = bboxes[:, 2:] * 1.2
+        # bboxes[:, 2:] = bboxes[:, 2:] * 1.2
         if args.render_plain:
             pred_cam[:,0], pred_cam[:,1:] = 1, 0  # np.array([[1, 0, 0]])
         orig_cam = convert_crop_cam_to_orig_img(

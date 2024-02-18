@@ -21,6 +21,7 @@ import os.path as osp
 import torch
 from torch.utils.data import Dataset
 from torchvision.transforms.functional import to_tensor
+from skimage.transform import resize
 
 from lib.utils.smooth_bbox import get_all_bbox_params
 from lib.data_utils._img_utils import get_single_image_crop_demo, convert_cvimg_to_tensor
@@ -118,7 +119,7 @@ class FullIMageDataset(Dataset):
         self.image_file_names = sorted(self.image_file_names)
         self.image_file_names = np.array(self.image_file_names)[frames]
 
-        self.bboxes = bboxes
+        self.bboxes = np.repeat(np.array([0, 0, 224, 224]).reshape(1, -1), len(self.image_file_names), axis=0)
         self.joints2d = joints2d
         self.scale = scale
         self.crop_size = crop_size
@@ -128,9 +129,10 @@ class FullIMageDataset(Dataset):
         return len(self.image_file_names)
 
     def __getitem__(self, idx):
-        # TODO: resize image using interpolate funciton. Check that image is still ok
         img = cv2.cvtColor(cv2.imread(self.image_file_names[idx]), cv2.COLOR_BGR2RGB)
+
+        img = resize(img, (224, 224), anti_aliasing=True)
 
         img = convert_cvimg_to_tensor(img)
 
-        return img
+        return img.type(torch.FloatTensor)
